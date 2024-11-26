@@ -1,0 +1,301 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1910436561903220247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966076132594351877}
+  - component: {fileID: 5051895327927975570}
+  - component: {fileID: 1384307917484225795}
+  - component: {fileID: 7559943531390475703}
+  - component: {fileID: 5042472910955533236}
+  m_Layer: 5
+  m_Name: NPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &966076132594351877
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910436561903220247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 120}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!222 &5051895327927975570
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910436561903220247}
+  m_CullTransparentMesh: 1
+--- !u!114 &1384307917484225795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910436561903220247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9f4c90beef71f7c47ad386e544152253, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7559943531390475703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910436561903220247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44368a0107665941aeaa9261cd0bdc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typingSpeed: 0.05
+  mapBener: 0
+  clipCall: {fileID: 8300000, guid: 616a85d355c80b14d8e777f5a556f88f, type: 3}
+  clipHangUp: {fileID: 8300000, guid: eedb83fdb965e9e4e9125f420bf22705, type: 3}
+  text: {fileID: 0}
+  location:
+  - home
+  - k hotel
+  - campsite
+  - highway
+  - restaurant
+  - home
+  - Tiger school
+  - market
+  - home
+  - home
+  - x mall
+  - home
+  - amusement park
+  - parking lot
+  - home
+  - community center
+  face:
+  - {fileID: 21300000, guid: b579580986a07a343b181d8cf454453c, type: 3}
+  - {fileID: 21300000, guid: 9a5822a33cc699a4d880e869dd646194, type: 3}
+  - {fileID: 21300000, guid: 4a435b9d6020d48408429c9e8e6126ae, type: 3}
+  - {fileID: 21300000, guid: 437dd5e6b06892e4da155746591b45e8, type: 3}
+  - {fileID: 21300000, guid: 9ca9ab1444bc7db40adde61554ad5e19, type: 3}
+  - {fileID: 21300000, guid: acda08b63498c3c4cbbf7cbcb80da624, type: 3}
+  - {fileID: 21300000, guid: f46651de1625b9f43a8fed25c8e90c08, type: 3}
+  - {fileID: 21300000, guid: c0f0f5090964ee749bdf0ddaaab8be48, type: 3}
+  - {fileID: 21300000, guid: 58ae464f671eefc4d82c1e38af067b78, type: 3}
+  - {fileID: 21300000, guid: f58ba9f0fe04af8429418483afec621c, type: 3}
+  - {fileID: 21300000, guid: b42d61dd64cbee445a1f1011561afa76, type: 3}
+  - {fileID: 21300000, guid: 6513f1504a57ea94db529a0616b5760b, type: 3}
+  - {fileID: 21300000, guid: b2e85d26d5f87e64cbe771c0d0612e97, type: 3}
+  - {fileID: 21300000, guid: 020739813f25a0a48a1ecbda5fb1affe, type: 3}
+  - {fileID: 21300000, guid: 774963f1f8eb5ec44a8134a579b8cb23, type: 3}
+  - {fileID: 21300000, guid: 65cdfc0c178f9c848ad72ed62948e5fc, type: 3}
+  soundsIDN:
+  - {fileID: 8300000, guid: fe685ff2f4cfdcf40b31d506a2f7a6e7, type: 3}
+  - {fileID: 8300000, guid: c8f6efbd892e5b44d9705ac113837e49, type: 3}
+  - {fileID: 8300000, guid: 6f0ceff7a074a95418f3009d3a0a12fc, type: 3}
+  - {fileID: 8300000, guid: bfa425f90420ccd44bdad45f1dd369f4, type: 3}
+  - {fileID: 8300000, guid: 6e90308feaf5aa745a913fb7e81fd4ec, type: 3}
+  - {fileID: 8300000, guid: 2dfd7912c80ba484ba03818728845a08, type: 3}
+  - {fileID: 8300000, guid: cccf9c420549a5942b472283c5228bee, type: 3}
+  - {fileID: 8300000, guid: 90516483a590b714dbf983e1ec8b362d, type: 3}
+  - {fileID: 8300000, guid: 97ad37f86d40912498d6a20b5a96a25d, type: 3}
+  - {fileID: 8300000, guid: bb751dfe6e6c44c42a7c2c8fbbc826b0, type: 3}
+  - {fileID: 8300000, guid: 194a092c52ffd944fa94c7ad714a6291, type: 3}
+  - {fileID: 8300000, guid: a177e9e033532c84eb7577c8cf3e97ab, type: 3}
+  - {fileID: 8300000, guid: 0f9c72524ad7bcd4b90bbd65109c978a, type: 3}
+  - {fileID: 8300000, guid: 82111f0e5e0adf645b20da3099232c23, type: 3}
+  - {fileID: 8300000, guid: 2bc15751fdf888047832bbae36819f9f, type: 3}
+  - {fileID: 8300000, guid: 6aba04ad2087c1f489175fe8d6eaf5b0, type: 3}
+  soundsENG:
+  - {fileID: 8300000, guid: 058de93a535800448ad1e7329e779649, type: 3}
+  - {fileID: 8300000, guid: 6904643bb7a3c4541afc02b9f83208e7, type: 3}
+  - {fileID: 8300000, guid: be7608996be92f44d9dd1eb32edada34, type: 3}
+  - {fileID: 8300000, guid: 7047868ea32adac43847c78f189e218a, type: 3}
+  - {fileID: 8300000, guid: f62a8706bc920424b8931fa46870996e, type: 3}
+  - {fileID: 8300000, guid: d7cf39f644df5b7448d3c07e4c541cb4, type: 3}
+  - {fileID: 8300000, guid: d4c0ba80fce9d7d44a2f4a15bff54b11, type: 3}
+  - {fileID: 8300000, guid: 12b7ab60fca79c04e8f322ffa5f0f005, type: 3}
+  - {fileID: 8300000, guid: 59d35b71218bb13499c692085ff51bd6, type: 3}
+  - {fileID: 8300000, guid: 61d3ea32c215f8341a3c119ab61ef2ba, type: 3}
+  - {fileID: 8300000, guid: 6c89f6da526b2a5499f771551b67687f, type: 3}
+  - {fileID: 8300000, guid: 083161e646e104547bf9f428560b4434, type: 3}
+  - {fileID: 8300000, guid: 401825520f11ed643b9ea36a0126ce2f, type: 3}
+  - {fileID: 8300000, guid: 318494abac80344428b4e5e436434654, type: 3}
+  - {fileID: 8300000, guid: 1223739bff76bc54b81daf71dc64afb3, type: 3}
+  - {fileID: 8300000, guid: 63cb61f371125814989c7621c0141b2b, type: 3}
+  emergency:
+  - stomachache
+  - breathing difficulty
+  - burnt hand
+  - allergic reactions
+  - drunk
+  - stung by a bee
+  - basketball injury
+  - dog bites
+  - domestic violence
+  - food poisoning
+  - swallowed a toy
+  - epilepsy
+  - heart attack
+  - hit and run
+  - electric failure
+  - sudden death
+  current_emergency: 
+  dialogIDN:
+  - AHH! Perut saya sangat sakit dan melilit. Kepala saya sepertinya juga mulai terasa
+    pusing. Sepertinya karena saya makan sup mala tadi sangat pedas. Saya di rumah
+    juga tidak memiliki obat apapun. Tolong bantu saya.
+  - Tolong! Kakak saya sedang berenang dan tiba-tiba sesak napas.  Saya berada di
+    K hotel. Bagaimana ini, apa yang bisa saya lakukan?
+  - Tolong! Tangan saya terbakar! Saya sedang camping dan memasak steak kemudian
+    apinya tiba-tiba menyambar tangan saya! Bagaimana ini? apakah saya boleh mencelupkan
+    tangan saya ke kolam itu?
+  - Tolong! Saya salah makan! Saya tidak sengaja makan keju! Alergi saya mulai kambuh!
+    Saya takut akan segera pingsan! Bagaimana ini saya sedang sendiri di mobil saya!
+  - Halo? Halo! Tolong! Saya menemukan remaja mabuk di depan restoran saya! Dia tidak
+    mau bangun, bagaimana ini? Kirim bantuan! Saya harus segera pulang!
+  - Halo!!! Saya... saya tersengat lebah, banyak sekali! Saya sedang berkebun dihalaman
+    tiba-tiba lebahnya muncul! Kulit saya mulai memerah dan terasa sangat gatal.
+    Napas saya juga mulai sesak, apa yang harus saya lakukan??? Tolong, saya nggak
+    tahu harus bagaimana!!!
+  - Tolong kirimkan ambulans, salah satu pemain basket kami cedera dalam pertandingan.
+    Tolong datang ke lapangan sekolah Tiger segera!
+  - Tolongg! Saya sedang di pasar, di depan saya ada orang tergigit anjing. Kakinya
+    terluka parah! Aduh itu darahnya banyak sekali, Bagaimana ini?
+  - Halo?? Kak?? Tolong... ini ayah saya... dia melakukannya lagi... dia memukulinya
+    terus-menerus... aduh... sepertinya dia terluka... tolong... saya sangat takut.
+  - 'Cepat bantu! Sepertinya adik saya keracunan makanan. Ia terus muntah dalam 30
+    menit ini. '
+  - 112! Kami di mall X, Anak saya! Ia menelan mainannya ketika saya sedang berbelanja
+    dan sekarang ia kesulitan bernapas! TOLONG!
+  - "Uhh\u2026 Maaf\u2026 sepertinya epilepsi saya akan kambuh\u2026 dirumah saya
+    sepertinya tidak ada orang\u2026 tolong\u2026 saya sangat takut... saya tidak
+    mau begini lagi... tolong... "
+  - " \rBagaimana ini? Ayah saya! Sepertinya ia terkena serangan jantung. 2 menit
+    lalu katanya ia merasa sesak dan dadanya tertekan dan sekarang ia terjatuh pingsan.
+    Kami sedang di taman bermain, tolong!"
+  - Halo! Cepat tolong! Ada orang tertabrak di area parkiran dan penabraknya kabur!
+    Sepertinya kepalanya berdarah, apa yang harus saya lakukan?
+  - Tidakkk! Tidakkk! Kebakarannn! Apinya dimana-mana! Rumah saya kebakaran! TOLONG!!
+    TOLONG!!
+  - 'Saya berada di Bluehall Community Center. tetangga saya, sudah meninggal. Atau
+    dia tidak bergerak. Saya tidak yakin, saya tidak ingin menyentuhnya. Dia terlihat
+    sangat pucat. Tolong kirimkan bantuan! '
+  dialogENG:
+  - "AHH!!! My stomach\u2014it's killing me!! It feels like my insides are twisting
+    and ripping apart! Oh man, everything's spinning! I think it's that mala soup,
+    it was SOOO spicy! I don't have any medicine here at home, nothing! What should
+    I do? Please, help! I can't take it anymore."
+  - "Help!!! My sister! she was swimming and suddenly can't catch her breath. we're
+    at K Hotel. Oh my\u2014oh my\u2014what to do? what to do!"
+  - Help! Help! My hand is in fire! I'm camping, cooking steak and the fire AHH--it
+    suddenly burst out to my hand! AHH! It really huts! Can I just dunk it in the
+    pond? OH MY GOD PLEASE HELP!
+  - "Damn it! I just ate cheese by accident! I'm lactose intolerant! Oh God, I can
+    feel it starting\u2014the reaction! I'm so scared and freaking out, I think I'm
+    about to pass out! I'm in my car, kinda on the highway, ALONE! What do I do?
+    Please, send help! "
+  - UGH! This is disgusting! I've got a bunch of drunk teenagers passed out in front
+    of my restaurant! They wont wake up, and I need to close the rolling door! Just
+    send help! Now! I can't deal with this, move them, please!
+  - "Hello?! Oh my God, Please help me! I\u2014I just got stung by a ton of bees!
+    I was just gardening on my backyard and they came out of nowhere! My skin's getting
+    very red and itchy. Oh my, oh my, it's getting hard to breathe! Please, what
+    should I do? Help me! Help me! "
+  - "Uhh! Please send ambulance! One of my trainees got seriously hurt on the basketball
+    match. We're at Tiger School\u2014Oh! OH! She just fainted! I've checked before
+    and I think her left foot is torn, might be her ACL. Hurry! We really need help!"
+  - Uh Oh! I'm at the market and someone just got bitten by a dog. Their foot is
+    badly injured! Darn! There's blood everywhere, Oh my, they're so scared and panicked,
+    please help!
+  - Hello? miss? please help... it's my father... he's doing it again... he's hitting
+    her continuously... oh no... i think she's bleeding... please... help... I'm
+    scared...
+  - "No! No, no, no! Oh my God\u2014my sister! I think she\u2019s got food poisoning!
+    She\u2019s been throwing up non-stop for 30 minutes! I don\u2019t know what to
+    do\u2014please, help! This is bad, really bad!"
+  - "Is this 112? 112! We're at X Mall and\u2014and\u2014my kid, he swallowed his
+    favorite toy train!\u2014Ohh! I was just shopping for a minute, now he got trouble
+    breathing! help! what do I do? Hurry!"
+  - Uhh... I'm sorry... my parents aren't home, but I have epilepsy and I feel like
+    I'm gonna have a seizure. I'm in the bathroom and I don't know what to do, I'm
+    sorry. I'm sorry. I'm scared... I don't want this to happen again. Please help
+    me...
+  - "HELP! Please! HELP! It's my father! I think he's having a heart attack! Just
+    2 minutes ago he said he felt short of breath and a bit pressure on his chest,
+    and\u2014oh noo!\u2014now, he's unconscious. we're at the amusement park. Please!
+    Help me! Tell me how I can save him! Please I don't want to loose him!"
+  - Hello! Come quick! Someone got hit in the parking lot and the driver took off!
+    I think his head is bleeding and it's really creepy! I'm scared! Please! What
+    should I do? Help me help him! Please!
+  - "NOO! NOO! FIRE! it's everywhere! my whole house is on fire!!! SEND HELP!! PLEASEE!\r"
+  - I'm at the Bluehall Community Center. Uh... I think... my neighboor might dead.
+    Or... maybe she's just not moving. I don't know, I'm unsure. I don't dare to
+    touch her. I'm scared! She looks so pale. Please send help immediately! I don't
+    know what to do!
+  solutionName: 1
+  solutions: []
+  solution: {fileID: 0}
+  call: []
+  curr_call: []
+  idx: 0
+--- !u!95 &5042472910955533236
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910436561903220247}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09982ce479ab9c54c9f8b7ec13c6c4cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
