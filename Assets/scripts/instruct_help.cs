@@ -23,10 +23,12 @@ public class instruct_help : MonoBehaviour
     [SerializeField] private AudioClip[] callsIDN;
     [SerializeField] private AudioClip[] callsENG;
     NPC_manager npc_manager;
+    GameManager gm;
     public GameObject guide = null;
     // Start is called before the first frame update
     void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         audioSource = GameObject.Find("suaraNPC").GetComponent<AudioSource>();
         foreach (Button call in calls)
         {
@@ -67,6 +69,10 @@ public class instruct_help : MonoBehaviour
     {
         if (!isclicked)
         {
+            //gm.timing = false;
+            gm.instructed = true;
+            gm.timer[npc_manager.currTotal] = 11f;
+            isclicked = true;
             audioSource.Stop();
             audioSource.volume = 1;
             if (PlayerPrefs.GetString("language") == "english")
@@ -87,7 +93,6 @@ public class instruct_help : MonoBehaviour
             {
                 call.interactable = false;
             }
-            isclicked = true;
             if (PlayerPrefs.GetString("language") == "english")
             {
                 Invoke("giberish", 2.7f);
@@ -97,7 +102,7 @@ public class instruct_help : MonoBehaviour
                 Invoke("giberish", 3.9f);            
             }
 
-            Invoke("end", 10f);
+            //Invoke("end", 10f);
         }
     }
     void giberish()

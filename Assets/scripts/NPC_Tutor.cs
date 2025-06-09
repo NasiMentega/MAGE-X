@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class NPC_Tutor : MonoBehaviour
@@ -17,7 +18,10 @@ public class NPC_Tutor : MonoBehaviour
     public string location;
 
     [SerializeField] private string emergency;
-    [SerializeField] private Sprite face;
+    //[SerializeField] private Sprite face;
+    Image face;
+    Animator anim;
+    [SerializeField] private List<Sprite> faceAnim;
     [SerializeField] private AudioClip soundsIDN;
     [SerializeField] private AudioClip soundsENG;
 
@@ -35,6 +39,8 @@ public class NPC_Tutor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+        face = GetComponent<Image>();
         mapBener = false;
         playSFX(clipCall);
         help = FindObjectOfType<instruct_help>();
@@ -110,6 +116,7 @@ public class NPC_Tutor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("talking", isVoicing);
         if(isVoicing)
         {
             if (!audioSource.isPlaying && audioSource.time <= 0)
@@ -119,7 +126,7 @@ public class NPC_Tutor : MonoBehaviour
             }
         }
     }
-    bool hasChecked = false;
+    private bool hasChecked = false;
     public void check(GameObject currentSolution)
     {
         if (!hasChecked)
@@ -145,7 +152,7 @@ public class NPC_Tutor : MonoBehaviour
                 Debug.Log("salah1");
                 //gm.accuracy -= 34;
             }
-            if(gm.timer[manager.currTotal] > 0)
+            if(gm.waktuResTemp < 120f)
             {
                 Debug.Log("benar2");
                 gm.accuracy += 25;
@@ -165,7 +172,7 @@ public class NPC_Tutor : MonoBehaviour
                 Debug.Log("salah3");
                 //gm.accuracy -= 25;
             }
-            this.gameObject.GetComponent<Animator>().Play("end");
+            anim.SetTrigger("end");
             text.maxVisibleCharacters = 0;
             text.text = "...";
             StartCoroutine(typing());
@@ -208,4 +215,27 @@ public class NPC_Tutor : MonoBehaviour
         aud.clip = clipHangUp;
         aud.Play();
     }
+    public void FaceAnim(int idx)
+    {
+        face.sprite = faceAnim[idx];
+    }
+/*    IEnumerator charAnim()
+    {
+        int idx = 0;
+        while (audioSource.isPlaying)
+        {
+            face.sprite = faceAnim[idx];
+            if(idx < faceAnim.Count)
+            {
+                idx++;
+            }
+            else
+            {
+                idx = 0;
+            }
+            yield return new WaitForSeconds(0.3f);
+        }
+        face.sprite = faceAnim[0];
+        yield return null;
+    }*/
 }

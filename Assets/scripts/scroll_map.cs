@@ -39,8 +39,8 @@ public class scroll_map : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         if(isY)
         {
-            //offset += Input.GetAxis("Mouse Y");
-            offset += Input.GetTouch(0).deltaPosition.normalized.y * 0.2f;
+            offset += Input.GetAxis("Mouse Y");
+            //offset += Input.GetTouch(0).deltaPosition.normalized.y * 0.2f;
             if (offset < -1 || offset > 1)
             {
                 offset = 0;
@@ -49,8 +49,8 @@ public class scroll_map : MonoBehaviour, IBeginDragHandler, IDragHandler
         }
         else
         {
-            //offset += Input.GetAxis("Mouse X");
-            offset += Input.GetTouch(0).deltaPosition.normalized.x * -0.2f;
+            offset += Input.GetAxis("Mouse X");
+            //offset += Input.GetTouch(0).deltaPosition.normalized.x * -0.2f;
             if (offset < -1 || offset > 1)
             {
                 offset = 0;
@@ -58,24 +58,25 @@ public class scroll_map : MonoBehaviour, IBeginDragHandler, IDragHandler
             scroll.material.SetFloat("_offset", offset);
 
         }
-        if (Vector2.Distance(target.transform.localPosition, posAwal1) <= 48f)
+        if (Vector2.Distance(target.transform.localPosition, posAwal1) <= 47f)
         {
             //Debug.Log(Input.GetTouch(0));
             if(isY)
             {
-                //target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + (Input.GetAxis("Mouse Y") * targetSpeed), target.transform.position.z);
-                target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + (Input.GetTouch(0).deltaPosition.normalized.y * targetSpeed), target.transform.position.z);
+                target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + (Input.GetAxis("Mouse Y") * targetSpeed), target.transform.position.z);
+                //target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + (Input.GetTouch(0).deltaPosition.normalized.y * targetSpeed), target.transform.position.z);
             }
             else
             {
-                //target.transform.position = new Vector3(target.transform.position.x + (Input.GetAxis("Mouse X") * targetSpeed), target.transform.position.y, target.transform.position.z);
-                target.transform.position = new Vector3(target.transform.position.x + (Input.GetTouch(0).deltaPosition.normalized.x * targetSpeed), target.transform.position.y, target.transform.position.z);
+                target.transform.position = new Vector3(target.transform.position.x + (Input.GetAxis("Mouse X") * targetSpeed), target.transform.position.y, target.transform.position.z);
+                //target.transform.position = new Vector3(target.transform.position.x + (Input.GetTouch(0).deltaPosition.normalized.x * targetSpeed), target.transform.position.y, target.transform.position.z);
             }
             lastPosition = target.transform.localPosition;
         }
         else
         {
-            target.transform.localPosition = target.transform.localPosition - (lastPosition-posAwal1).normalized;
+            //target.transform.localPosition = target.transform.localPosition - (lastPosition-posAwal1).normalized;
+            target.transform.localPosition = Vector3.MoveTowards(target.transform.localPosition, posAwal1,Time.deltaTime*10f);
 /*            if (target.transform.localPosition.y > 48)
             {
                 target.transform.localPosition = new Vector3(target.transform.localPosition.x, 47, target.transform.localPosition.z);
@@ -179,5 +180,9 @@ public class scroll_map : MonoBehaviour, IBeginDragHandler, IDragHandler
             }
             //scroll.transform.position = new Vector3(Input.mousePosition.x, scroll.transform.position.y, scroll.transform.position.z);
         }*/
+    }
+    public void resetTargetPos()
+    {
+        target.GetComponent<RectTransform>().localPosition = Vector3.zero;
     }
 }

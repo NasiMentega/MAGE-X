@@ -7,6 +7,7 @@ public class NPC_manager : MonoBehaviour
 {
     //public int maxIdx;
     //public int minIdx;
+    [SerializeField] private scroll_map map;
     GameManager gm;
     public NPC npc;
     public NPC_Tutor npc_tutor;
@@ -21,12 +22,20 @@ public class NPC_manager : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
         //npc_tutor = FindObjectOfType<NPC_Tutor>();
-        if(PlayerPrefs.GetInt("level") == 1)
+        //demo
+        if (PlayerPrefs.GetInt("level") == 1)
+        {
+            emergency.Add("epilepsy");
+            emergency.Add("hit and run");
+            emergency.Add("heart attack");
+        }
+        //
+/*        if (PlayerPrefs.GetInt("level") == 1)
         {
             emergency.Add("breathing difficulty");
             emergency.Add("allergic reactions");
             emergency.Add("dog bites");
-        }
+        }*/
         else if (PlayerPrefs.GetInt("level") == 2)
         {
             emergency.Add("burnt hand");
@@ -62,6 +71,7 @@ public class NPC_manager : MonoBehaviour
     {
         if(currTotal < maxTotal)
         {
+            map.resetTargetPos();
             instruct_help help = FindObjectOfType<instruct_help>();
             help.isclicked = false;
             if (SceneManager.GetActiveScene().name != "tutorial" || !npc_tutor)

@@ -130,18 +130,22 @@ public class MenuManager : MonoBehaviour
     public void resetlvl()
     {
         PlayerPrefs.SetInt("level",0);
-        sure(false);
+        start();
+        //sure(false);
         //start();
     }
     [SerializeField] private GameObject sureReset;
     bool sureBool = false;
     public void sure(bool yesno)
     {
-        sureBool = !sureBool;
-        sureReset.SetActive(sureBool);
         if(yesno)
         {
             resetlvl();
+        }
+        else
+        {
+            sureBool = !sureBool;
+            sureReset.SetActive(sureBool);
         }
     }
     public void exitGame()
@@ -151,7 +155,6 @@ public class MenuManager : MonoBehaviour
     bool bukaSetting = false;
     public void setting()
     {
-        CancelInvoke("setting");
         bukaSetting = !bukaSetting;
         foreach(GameObject set in settings)
         {
@@ -161,10 +164,12 @@ public class MenuManager : MonoBehaviour
         {
             set.SetActive(!bukaSetting);
         }
+
+/*        CancelInvoke("setting");
         if(bukaSetting)
         {
             Invoke("setting", 5f);
-        }
+        }*/
     }
     public void language(GameObject language)
     {

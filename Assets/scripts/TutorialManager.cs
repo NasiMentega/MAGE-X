@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     [SerializeField] private Button[] solutions;
     [SerializeField] private GameObject NPCtutorial;
     [SerializeField] private GameObject tutorial;
@@ -60,6 +61,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("talking",audioSource.isPlaying);
         if(Input.anyKeyDown && idx < child.Length && tutorial.activeSelf)
         {
             count++;

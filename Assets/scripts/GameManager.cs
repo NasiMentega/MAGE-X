@@ -78,14 +78,25 @@ public class GameManager : MonoBehaviour
         {
             //GameObject tutor = FindObjectOfType<NPC_Tutor>().gameObject;
             //tutor.SetActive(false);
+
+            //demo
             if (level == 1)
+            {
+                npc_manager.maxTotal = 3;
+                timer = new float[npc_manager.maxTotal];
+                guidesEmergency.Add("epilepsy");
+                guidesEmergency.Add("hit and run");
+                guidesEmergency.Add("heart attack");
+            }
+            //
+            /*if (level == 1)
             {
                 npc_manager.maxTotal = 3;
                 timer = new float[npc_manager.maxTotal];
                 guidesEmergency.Add("breathing difficulty");
                 guidesEmergency.Add("allergic reactions");
                 guidesEmergency.Add("dog bites");
-            }
+            }*/
             else if (level == 2)
             {
                 npc_manager.maxTotal = 5;
@@ -140,6 +151,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void locationInactive()
+    {
+        foreach (Button obj in aktifTiming)
+        {
+            obj.interactable = false;
+        }
+    }
     void spawnGuides()
     {
         /*        for(int i = 0;i< guide_highlightsIdx.Length; i++)
@@ -165,8 +183,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < index.Count; i++)
         {
             int random = Random.Range(0, index2.Count);
-            GameObject clone = Instantiate(index[index2[random]]);
-            clone.transform.SetParent(guideParent.transform);
+            GameObject clone = Instantiate(index[index2[random]], guideParent.transform);
+            //clone.transform.SetParent(guideParent.transform);
             guidesClone.Add(clone);
             index.Remove(clone);
             index2.RemoveAt(random);
@@ -339,17 +357,29 @@ public class GameManager : MonoBehaviour
         if (npc_manager.currTotal < npc_manager.maxTotal && timer[npc_manager.currTotal] > 0 && !winning && timing)
         {
             timer[npc_manager.currTotal] -= Time.deltaTime;
-            waktuResTemp += Time.deltaTime;
+            if (!instructed)
+            {
+                waktuResTemp += Time.deltaTime;
+            }
         }
         else if (npc_manager.currTotal < npc_manager.maxTotal && timer[npc_manager.currTotal] <= 0 && !winning && timing)
         {
-            if (SceneManager.GetActiveScene().name != "tutorial" && !npc_manager.npc_tutor)
+            if (instructed)
             {
-                npc_manager.npc.check(null);
+                instructed = false;
+                instruct_help help = FindObjectOfType<instruct_help>();
+                help.end();
             }
             else
             {
-                npc_manager.npc_tutor.check(null);
+                if (SceneManager.GetActiveScene().name != "tutorial" && !npc_manager.npc_tutor)
+                {
+                    npc_manager.npc.check(null);
+                }
+                else
+                {
+                    npc_manager.npc_tutor.check(null);
+                }
             }
             timer[npc_manager.currTotal] = 0;
         }
@@ -371,6 +401,7 @@ public class GameManager : MonoBehaviour
             timerText.text = string.Format("{0:00}:{1:00}", menit, detik);
         }
     }
+    public bool instructed = false;
     public bool winning = false;
     public void paused()
     {
@@ -457,6 +488,7 @@ public class GameManager : MonoBehaviour
     public void addTime()
     {
         waktuRestotal.Add(waktuResTemp);
+        waktuResTemp = 0f;
     }
     AudioClip clipNPC = null;
     void playNPC()
@@ -492,6 +524,7 @@ public class GameManager : MonoBehaviour
             aud.clip = loseSFX;
             caseReport.transform.Find("Kiky_senang").gameObject.SetActive(false);
             caseReport.transform.Find("Kiky_marah").gameObject.SetActive(true);
+            nxtLvl.SetActive(false);
             //GameObject.Find("Kiky_senang").SetActive(false);
             //GameObject.Find("Kiky_marah").SetActive(true);
             if (PlayerPrefs.GetString("language") == "english")
@@ -532,7 +565,14 @@ public class GameManager : MonoBehaviour
     public void nextLvl()
     {
         level = PlayerPrefs.GetInt("level");
-        if(level < 3)
+        //demo
+        if (level >= 1)
+        {
+            PlayerPrefs.SetInt("level", 0);
+            SceneManager.LoadScene("ending");
+        }
+        //
+        else if(level < 3)
         {
             level++;
             PlayerPrefs.SetInt("level",level);

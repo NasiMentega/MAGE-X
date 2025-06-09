@@ -12,12 +12,26 @@ public class NPC : MonoBehaviour
     [SerializeField] private AudioClip clipCall;
     [SerializeField] private AudioClip clipHangUp;
     instruct_help help;
+    Image faceIMG;
+    Animator anim;
     AudioSource audioSource;
     NPC_manager manager;
     GameManager gm;
     [SerializeField] private TextMeshProUGUI text;
     public string[] location;
 
+    [System.Serializable]
+    struct faces
+    {
+        public string kasus;
+        //0 = mulut tutup, mata buka
+        //1 = mulut tutup, mata tutup
+        //2 = mulut buka, mata buka
+        //3 = mulut buka, mata tutup
+        public List<Sprite> faceAnim;
+    }
+    [SerializeField] private List<faces> structFace;
+    [SerializeField] private faces currFace;
     [SerializeField] private Sprite[] face;
     [SerializeField] private AudioClip[] soundsIDN;
     [SerializeField] private AudioClip[] soundsENG;
@@ -37,9 +51,12 @@ public class NPC : MonoBehaviour
     [SerializeField] private List<string> call;
     public List<string> curr_call;
     public int idx;
+    [SerializeField] private float timeNPC = 0;
     // Start is called before the first frame update
     void Start()
     {
+        faceIMG = GetComponent<Image>();
+        anim = GetComponent<Animator>();
 /*        call = new string[3];
         call[0] = "";
         call[1] = "";
@@ -54,7 +71,6 @@ public class NPC : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
         //current_emergency = emergency[idx];
 
-        float timeNPC = 0;
         if(PlayerPrefs.GetInt("level") < 3)
         {
             timeNPC = 120;
@@ -163,8 +179,10 @@ public class NPC : MonoBehaviour
         }
         text.text = "...";
         manager.npc = this;
-
-        gameObject.GetComponent<Image>().sprite = face[idx];
+        //mod
+        currFace = structFace[idx];
+        faceIMG.sprite = currFace.faceAnim[0];
+        //
         solutions = GameObject.FindGameObjectsWithTag(emergency[idx]);
         foreach (GameObject go in solutions)
         {
@@ -203,31 +221,35 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("talking", isVoicing);
         if (isVoicing)
         {
             if (!audioSource.isPlaying && audioSource.time <= 0)
             {
+                faceIMG.sprite = currFace.faceAnim[0];
                 mulaiTimer();
                 isVoicing = false;
             }
         }
     }
-    bool hasChecked = false;
+    private bool hasChecked = false;
     GameObject kiky_npc;
     GameObject kikySenang;
     GameObject kikyMarah;
     public void check(GameObject currentSolution)
     {
-        kiky_npc = GameObject.Find("kiky_NPC");
-        kikySenang = kiky_npc.transform.Find("KikySenang_NPC").gameObject;
-        kikyMarah = kiky_npc.transform.Find("KikyMarah_NPC").gameObject;
-        kikySenang.SetActive(false);
-        kikyMarah.SetActive(false);
-        int nilai = Mathf.CeilToInt(100f / (manager.maxTotal * 4));
-        //Debug.Log(nilai);
         if (!hasChecked)
         {
+            gm.locationInactive();
             hasChecked = true;
+            kiky_npc = GameObject.Find("kiky_NPC");
+            kikySenang = kiky_npc.transform.Find("KikySenang_NPC").gameObject;
+            kikyMarah = kiky_npc.transform.Find("KikyMarah_NPC").gameObject;
+            kikySenang.SetActive(false);
+            kikyMarah.SetActive(false);
+            int nilai = Mathf.CeilToInt(100f / (manager.maxTotal * 4));
+            //Debug.Log(nilai);
+
             if (currentSolution == solution)
             {
                 Debug.Log("solusi benar");
@@ -271,7 +293,12 @@ public class NPC : MonoBehaviour
                 Debug.Log("extra call salah");
             }
 
-            if (gm.timer[manager.currTotal] > 0)
+            /*if (gm.timer[manager.currTotal] > 0)
+            {
+                Debug.Log("tepat waktu");
+                gm.accuracy += nilai;
+            }*/
+            if (gm.waktuResTemp < timeNPC)
             {
                 Debug.Log("tepat waktu");
                 gm.accuracy += nilai;
@@ -291,7 +318,7 @@ public class NPC : MonoBehaviour
                 Debug.Log("map salah");
                 //gm.accuracy -= nilai;
             }
-            this.gameObject.GetComponent<Animator>().Play("end");
+            anim.SetTrigger("end");
             kiky_npc.GetComponent<Animator>().Play("report");
             text.maxVisibleCharacters = text.text.Length;
             text.text = "...";
@@ -358,5 +385,10 @@ public class NPC : MonoBehaviour
         aud.Stop();
         aud.clip = clipHangUp;
         aud.Play();
+    }
+    public void FaceAnim(int idx)
+    {
+        //Debug.Log(currFace.faceAnim[idx].name);
+        if(currFace.faceAnim.Count > idx) faceIMG.sprite = currFace.faceAnim[idx];
     }
 }
